@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Donald Riedl</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+
+    <nav>
+      <div id="logo">
+        <img src="images/logo.png" v-on:click="setPage('home')">
+      </div>
+      <ul>
+        <a href="#home"><li>Home</li></a>
+        <a href="#about"><li>About</li></a>
+        <a href="#portfolio"><li>Portfolio</li></a>
+        <a href="#contact"><li id="last-nav">Contact</li></a>
+      </ul>
+      <div id="nav-social-media">
+        <a href="https://github.com/riedldsr"><img src="images/github-icon.svg"></a>
+        <a href="https://www.linkedin.com/in/donald-riedl-b7863a105/"><img src="images/linkedin-icon.svg"></a>
+      </div>
+    </nav>
+
+    <main>
+      <div id="home">
+        <!------------ Home Page ----------->
+        <h1>
+          <div>H</div><div>i</div><div>,</div>
+          <div>m</div><div>y</div>
+          <div>n</div><div>a</div><div>m</div><div>e</div>
+          <br />
+          <div>i</div><div>s</div>
+          <span>Donald</span><div>.</div>
+        </h1>
+
+        <div id="decorator-bar-container">
+          <div class="decorator-bar" id="right-decorator-bar"></div>
+          <div class="decorator-bar" id="center-decorator-bar"></div>
+          <div class="decorator-bar" id="left-decorator-bar"></div>
+        </div>
+
+        <h2>I bring the web to life...</h2>
+
+      </div>
+
+      <div id="about">
+        <!------------ About Page ----------->
+        <h1 class="subpage-title">About Me</h1>
+        <div class="title-underline decorator-bar"></div>
+        <div class="body-text">
+          <p>I am an aspiring full-stack developer, currently attending Dixie State University pursuing a degree in Software Engineering.</p>
+            <br />
+            <p>I love to push myself  beyond what I think I am capable of, and make some cool stuff along the way.</p>
+            <br />
+            <p>Check out my portfolio to see some of my favorite projects.</p>
+        </div>
+        <div id="headshot-container">
+          <img src="images/headshot.jpg" alt="Headshot portrait of Donald Riedl">
+          <div id="headshot-decorator"></div>
+        </div>
+        <div id="skills">
+          <h3>Skills</h3>
+          <div class="decorator-bar secondary-underline"></div>
+          <ul>
+            <li>Javascript</li>
+            <li>VueJS</li>
+            <li>NodeJS</li>
+            <li>Express</li>
+            <li>MongoDB</li>
+            <li>Python</li>
+            <li>C++</li>
+            <li>SQL</li>
+            <li>HTML/CSS</li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="portfolio">
+        <!------------ Portfolio Page ----------->
+        <h1 class="subpage-title">My Work</h1>
+        <div class="title-underline decorator-bar"></div>
+
+        <div class="body-text">
+          <p>These are a few projects I am particularly proud of.  These are mostly exporation projects to learn new technologies and improve old ones.</p>
+          <br />
+          <p>There isn't much yet, but I'm constantly working on new stuff and more will be added.</p>
+          <br />
+          <p>To see a everything I've been working on check out my <a href="https://github.com/riedldsr" target="_blank">GitHub</a>.</p>
+        </div>
+
+        <div id="projects-container">
+          <div class="project-image-container" style="background-image: url('images/crossword.png')">
+            <div class="project-image-overlay">NYT Crosswords</div>
+          </div>
+          <div class="project-image-container" style="background-image: url('images/DSUSA.jpg')">
+            <div class="project-image-overlay">DSUSA Website</div>
+          </div>
+          <div class="project-image-container" style="background-image: url('images/fractal.png')">
+            <div class="project-image-overlay">Fractal Viewer</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="contact">
+        <!------------ Contact Page ----------->
+        <h1 class="subpage-title">Contact</h1>
+        <div class="title-underline decorator-bar"></div>
+
+        <div class="body-text">
+          <p>If you’d like to be in touch, feel free to reach out to me using this form.</p> 
+          <br />
+          <p>You can also connect with me on <a href="https://www.linkedin.com/in/donald-riedl-b7863a105/">LinkedIn</a> or <a href="https://github.com/riedldsr">GitHub</a>.</p>
+        </div>
+
+        <form id="contact-form">
+          <div class="form-group">
+            <input id="input-name" type="text" placeholder="Name">
+            <input id="input-email" type="text" placeholder="Email">
+          </div>
+          <input id="input-subject" type="text" placeholder="Subject">
+          <textarea id="input-message" placeholder="Message"></textarea>
+          <button type="button" id="contact-submit-button">Send Message <img src="images/arrows-white.png"></button>
+        </form>
+        <div id="contact-bottom-decorator-bar-container">
+          <div id="contact-bottom-decorator-bar"></div>
+        </div>
+
+      </div>
+
+      <main id="crossword" class="projects" v-if="currentPage == 'crossword'" v-cloak>
+        <!------------ Crossword Project Page ----------->
+
+        <h1 class="subpage-title">Crosswords</h1>
+        <div class="title-underline"><div></div></div>
+
+        <div class="body-text">
+          <p>Crossword web app, loaded with data from over 14,000 different puzzles published in the New York Times.</p>
+          <br />
+          <p>Built with NodeJS, Express, Vue and SQLite.</p>
+          <br />
+          <p>Click <a href="#">here</a> to try it out, the code is also available on my <a href="https://github.com/riedldsr">GitHub</a>.</p>
+          <button v-on:click="setPage('portfolio')"><img src="images/arrows-white-flipped.png">Return to Portfolio</button>
+        </div>
+
+        <img class="project-large-image-container" src="images/crossword-large.jpg">
+      </main>
+
+      <main id="dsusa" class="projects" v-if="currentPage == 'dsusa'" v-cloak>
+        <!------------ DSUSA Project Page ----------->
+
+        <h1 class="subpage-title">DSUSA</h1>
+        <div class="title-underline"><div></div></div>
+
+        <div class="body-text">
+          <p>Website redesign for the DSUSA section of the dixie.edu domain.  I redesigned the Campus Life tab of the main page, and every secondary link beyond that.</p>
+          <br />
+          <p>Built using wordpress, with some small use of javascript and CSS.</p>
+          <br />
+          <p>Click <a href="https://campuslife.dixie.edu">here</a> to check it out.</p>
+          <button v-on:click="setPage('portfolio')"><img src="images/arrows-white-flipped.png">Return to Portfolio</button>
+        </div>
+
+        <img class="project-large-image-container" src="images/DSUSA-large.png">
+      </main>
+
+      <main id="fractal" class="projects" v-if="currentPage == 'fractal'" v-cloak>
+        <!------------ Fractal Project Page ----------->
+
+        <h1 class="subpage-title">Fractal Viewer</h1>
+        <div class="title-underline"><div></div></div>
+
+        <div class="body-text">
+          <p>Fractal Viewer that calculates and displays fractals.  Created as a final project for C++ class.</p>
+          <br />
+          <p>Built in C++ using OpenGL for the GUI.</p>
+          <br />
+          <p>The code is available on my <a href="https://github.com/riedldsr">GitHub</a>.</p>
+          <button v-on:click="setPage('portfolio')"><img src="images/arrows-white-flipped.png">Return to Portfolio</button>
+        </div>
+
+        <img class="project-large-image-container" src="images/fractal-large.png">
+      </main>
+    </main>
+
+
+    <script src="script.js"></script>
+  </body>
+</html>
